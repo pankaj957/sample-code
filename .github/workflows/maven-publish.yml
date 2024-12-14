@@ -39,3 +39,35 @@ jobs:
     # Step 6: Push Docker image to registry
     - name: Push Docker Image
       run: docker push jadhav957/samplejava
+      
+    # Step 7: Set up AWS credentials for accessing EKS
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v3
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-south-1  
+        
+    # Step 8: Set up kubectl for EKS
+    - name: Setup kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'latest'
+
+    # Step 9: Authenticate to EKS
+    - name: Authenticate to EKS
+      run: |
+        aws eks update-kubeconfig --name --name os-eks-01 --region ap-south-1
+
+    # Step 10: Setup Helm
+    - name: Setup Helm
+      uses: azure/setup-helm@v3
+      with:
+        version: 'latest'
+
+    # Step 11: Deploy Helm Chart to EKS
+    - name: Deploy Helm Chart
+      run: |
+        helm upgrade --install sample-application ./helm \
+        --namespace dev \
+        -f ./helm/values.yaml
