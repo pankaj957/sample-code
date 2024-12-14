@@ -57,7 +57,7 @@ jobs:
     # Step 9: Authenticate to EKS
     - name: Authenticate to EKS
       run: |
-        aws eks update-kubeconfig --name --name os-eks-01 --region ap-south-1
+        aws eks update-kubeconfig --name os-eks-01 --region ap-south-1
 
     # Step 10: Setup Helm
     - name: Setup Helm
