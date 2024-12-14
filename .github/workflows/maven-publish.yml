@@ -33,3 +33,9 @@ jobs:
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        
+    - name: build and push docker image to registry
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: sample-code/demo1:latest
