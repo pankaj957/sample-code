@@ -36,6 +36,6 @@ jobs:
     - name: Build Docker Image
       run: docker build -t jadhav957/samplejava .
 
-    # Step 6: Push Docker image to hub
+    # Step 6: Push Docker image to registry
     - name: Push Docker Image
       run: docker push jadhav957/samplejava
