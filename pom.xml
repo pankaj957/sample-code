@@ -74,5 +74,11 @@
 			</releases>
 		</pluginRepository>
 	</pluginRepositories>
+	<distributionManagement>
+   		 <repository>
+        		<id>github</id>
+        		<url>https://maven.pkg.github.com/pankaj957/sample-code</url>
+    		</repository>
+	</distributionManagement>
 
 </project>
