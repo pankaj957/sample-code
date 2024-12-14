@@ -5,7 +5,7 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn package -DskipTests
 
-# Stage 2: Create the runtime container
+# Stage 2: Create the runtime containers
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
