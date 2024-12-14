@@ -1,15 +1,13 @@
-# Use an official Java runtime as a base image
-FROM openjdk:21-jdk-slim
-
-# Set the working directory inside the container
+# Stage 1: Build the application
+FROM maven:3.9.5-eclipse-temurin-17 AS builder
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn package -DskipTests
 
-# Copy the application JAR file into the container
-COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose port 8080
+# Stage 2: Create the runtime container
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=builder /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
-
+CMD ["java", "-jar", "app.jar"]
