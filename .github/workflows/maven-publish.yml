@@ -68,7 +68,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # Step 11: Deploy Helm Chart to EKS
+    # Step 11: Deploy Helm Chart to EKS cluster
     - name: Deploy Helm Chart
       run: |
         helm upgrade --install sample-application-prod ./helm \
