@@ -16,8 +16,6 @@ GitHub Actions Workflow
   Infrastructure Provisioning: Uses Terraform to set up required cloud infrastructure.
   You can find the workflow file in the .github/workflows/ directory. Customize it to suit your project's requirements.
 
-Getting Started
-
 To clone this repository, use:
 
 git clone https://github.com/pankaj957/sample-code.git
