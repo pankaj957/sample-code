@@ -76,8 +76,8 @@ jobs:
     # Step 12: Deploy Helm Chart to EKS
     - name: Deploy Helm Chart
       run: |
-        helm upgrade --install sample-application-dev ./helm \
-        --namespace dev \
+        helm upgrade --install sample-application-prod ./helm \
+        --namespace prod \
         -f ./helm/values.yaml \
         --set image.repository=jadhav957/samplejava \
         --set image.tag=${{ env.IMAGE_TAG }}
