@@ -1,6 +1,6 @@
 apiVersion: v2
 name: sample-application-dev
-description: A Helm chart for deploying a sample application
+description: A Helm chart for deploying a sample applications
 type: application
 version: 1.0.0
 appVersion: latest
