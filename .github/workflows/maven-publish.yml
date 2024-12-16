@@ -71,6 +71,6 @@ jobs:
     # Step 11: Deploy Helm Chart to EKS cluster
     - name: Deploy Helm Chart
       run: |
-        helm upgrade --install sample-application-prod ./helm \
+        helm upgrade --install sample-application-prod ./helm --force \
         --namespace prod \
         -f ./helm/values.yaml
